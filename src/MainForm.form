@@ -19,6 +19,7 @@
         <properties>
           <editable value="false"/>
           <enabled value="true"/>
+          <lineWrap value="true"/>
           <text value="Status"/>
         </properties>
         <clientProperties>

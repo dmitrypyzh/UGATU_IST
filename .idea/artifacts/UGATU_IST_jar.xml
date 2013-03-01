@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="UGATU_IST:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/UGATU_IST_jar</output-path>
+    <root id="archive" name="UGATU_IST.jar">
+      <element id="module-output" name="UGATU_IST" />
+    </root>
+  </artifact>
+</component>
