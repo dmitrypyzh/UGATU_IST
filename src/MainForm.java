@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.*;
+import javax.swing.filechooser.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,8 +23,14 @@ public class MainForm {
         // для обработки Выбрать файл
         openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-
-
+                // Диалог выбора текстового файла
+                final JFileChooser fc = new JFileChooser();
+                fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                fc.setAcceptAllFileFilterUsed(false);
+                fc.setMultiSelectionEnabled(false);
+                fc.addChoosableFileFilter(new FileNameExtensionFilter("Текстовый файл (*.txt)", "txt"));
+                fc.showOpenDialog(mainPanel);
             }
         });
 
