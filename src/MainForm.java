@@ -36,8 +36,19 @@ public class MainForm {
                         // Потоки для чтения файла
                         FileInputStream stream = new FileInputStream(fc.getSelectedFile().getPath());
                         InputStreamReader reader = new InputStreamReader(stream);
+                        int ch = reader.read();
+                        int count = 0;
+                        while (ch != -1) {
+                            // Проверка на возврат коретки и перенос строки (не считаем)
+                            if (ch != 13 && ch != 10)
+                            count++;
+                            ch = reader.read();
+                        }
                         reader.close();
                         stream.close();
+                        // Вывод отчета
+                        statusTextArea.setText(String.format("Файл: %s%n%nПечатных знаков (символов): %,d%n%nАвторских листов: %.2f", fc.getSelectedFile().getPath(), count, (double) count / 40000));
+                    
                     } catch (Exception e) {
                         statusTextArea.setText(String.format("Ошибка: %s", e.getMessage()));
                     }
