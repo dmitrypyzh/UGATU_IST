@@ -30,7 +30,20 @@ public class MainForm {
                 fc.setAcceptAllFileFilterUsed(false);
                 fc.setMultiSelectionEnabled(false);
                 fc.addChoosableFileFilter(new FileNameExtensionFilter("Текстовый файл (*.txt)", "txt"));
-                fc.showOpenDialog(mainPanel);
+                int r = fc.showOpenDialog(mainPanel);
+                if (r == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        // Потоки для чтения файла
+                        FileInputStream stream = new FileInputStream(fc.getSelectedFile().getPath());
+                        InputStreamReader reader = new InputStreamReader(stream);
+                        reader.close();
+                        stream.close();
+                    } catch (Exception e) {
+                        statusTextArea.setText(String.format("Ошибка: %s", e.getMessage()));
+                    }
+                } else {
+                    statusTextArea.setText("Выберите файл...");
+                }
             }
         });
 
